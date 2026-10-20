@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Celsius from "./components/Celsius";
 import Fahrenheit from "./components/Fahrenheit";
+import ProgrammerForm from "./components/ProgrammerForm";
+import ProgrammerList from "./components/ProgrammerList";
 
 function App() {
   // Lifting State
@@ -20,6 +22,15 @@ function App() {
     setScale("c");
   };
 
+  const [programmers, setProgrammers] = useState([
+    { github: "java_coder1000", language: "Java", id: 1 },
+  ]);
+
+  const addProgrammer = (programmer) => {
+    // add the progammer to our array state
+    setProgrammers([...programmers, programmer]);
+  };
+
   return (
     <>
       <h1>4A - Lifting State</h1>
@@ -33,6 +44,8 @@ function App() {
         handleTempChange={handleCelsius}
         scale={scale}
       />
+      <ProgrammerForm addProgrammer={addProgrammer} />
+      <ProgrammerList programmers={programmers} />
     </>
   );
 }

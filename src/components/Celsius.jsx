@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 const Celsius = ({ temperature, handleTempChange, scale }) => {
